@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/core/api.service';
 
 @Component({
   selector: 'app-last-rates',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LastRatesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: ApiService
+  ) { }
 
   ngOnInit() {
+    this.apiService.get('latest').subscribe(res =>
+      console.log(res));
   }
 
 }

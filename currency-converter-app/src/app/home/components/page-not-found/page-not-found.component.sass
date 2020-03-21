@@ -1,4 +1,10 @@
 @import '../../../../assets/flex'
 
 .page-not-found 
-	display: flexbox
+	@include flexbox
+	@include justify-content(center)
+	font-size: 3rem
+	&__title
+		color: red
+	&__message
+		margin-left: 24px

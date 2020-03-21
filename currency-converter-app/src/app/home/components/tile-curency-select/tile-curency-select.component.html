@@ -1,0 +1,16 @@
+
+<mat-toolbar color="primary" class="currency-toolbar">
+    <div class="currency-toolbar__title">
+        <h1> ExchangeApp</h1>
+    </div>
+    <div class="currency-toolbar__select-container">
+        <mat-label class="currency-toolbar__label">BASE</mat-label>
+        <mat-form-field class="currency-toolbar__select">
+            <mat-select [(value)]="baseCurrency">
+                <mat-option *ngFor="let currency of currencyList" value="{{currency}}">{{currency}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</mat-toolbar>
+
