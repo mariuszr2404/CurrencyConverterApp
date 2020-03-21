@@ -6,7 +6,7 @@
     <div class="currency-toolbar__select-container">
         <mat-label class="currency-toolbar__label">BASE</mat-label>
         <mat-form-field class="currency-toolbar__select">
-            <mat-select [(value)]="baseCurrency">
+            <mat-select [(value)]="baseCurrency" (selectionChange)="changeBaseRate($event)">
                 <mat-option *ngFor="let currency of currencyList" value="{{currency}}">{{currency}}
                 </mat-option>
             </mat-select>

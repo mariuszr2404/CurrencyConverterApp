@@ -7,11 +7,11 @@ import { LastRatesComponent } from './components/last-rates/last-rates.component
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'lastRates', component: LastRatesComponent },
+  { path: 'lastest', component: LastRatesComponent },
   { path: 'historical', component: HistoricalComponent },
-  { path: 'topDiff', component: TopDifferenceCurrencyComponent },
+  { path: 'comparison', component: TopDifferenceCurrencyComponent },
   { path: '',
-    redirectTo: '/lastRates',
+    redirectTo: '/lastest',
     pathMatch: 'full'
   },
   { path: '**', component: PageNotFoundComponent }

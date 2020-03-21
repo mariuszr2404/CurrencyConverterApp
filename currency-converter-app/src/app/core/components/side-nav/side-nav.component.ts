@@ -7,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  opened: boolean = true;
-
   constructor() { }
 
   ngOnInit() {

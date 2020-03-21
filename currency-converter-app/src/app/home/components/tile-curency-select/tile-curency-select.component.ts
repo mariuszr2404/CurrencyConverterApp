@@ -1,23 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CurrencyService } from 'src/app/core/services/currency.service';
+import { Subscription } from 'rxjs';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-tile-curency-select',
   templateUrl: './tile-curency-select.component.html',
   styleUrls: ['./tile-curency-select.component.sass']
 })
-export class TileCurencySelectComponent implements OnInit {
+export class TileCurencySelectComponent implements OnInit, OnDestroy {
 
-  currencyList = ['CAD', 'HKD', 'ISK', 'PHP', 'DKK', 'HUF', 'CZK', 'AUD', 'RON', 'SEK', 'IDR', 'INR', 'BRL', 'RUB', 'HRK', 'JPY',
-  'THB', 'CHF', 'SGD', 'PLN', 'BGN', 'HRK',
-  'TRY', 'CNY', 'NOK', 'NZD', 'ZAR', 'USD',
-  'MXN', 'ILS', 'GBP', 'KRW', 'MYR', 'EUR'
-  ];
+  private rates$: Subscription;
+  currencyList = [];
+  baseCurrency = 'EUR';
 
-  baseCurrency = this.currencyList[0];
+  constructor(private currencyService: CurrencyService) {
+    this.currencyService.availableCurrency.subscribe(val => {
+      this.currencyList = val;
+    });
+  }
 
-  constructor() { }
+  setBaseCurrency(currency: string) {
+    this.baseCurrency = currency;
+  }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.rates$.unsubscribe();
+  }
+
+  changeBaseRate(event: MatSelectChange) {
+    this.currencyService.baseRate.next(event.value);
   }
 
 }

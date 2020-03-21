@@ -9,7 +9,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { TileCurencySelectComponent } from './components/tile-curency-select/tile-curency-select.component';
 import { MaterialDesignModule } from '../material-components/material-design.module';
 
-
 @NgModule({
   declarations: [
     HistoricalComponent,
