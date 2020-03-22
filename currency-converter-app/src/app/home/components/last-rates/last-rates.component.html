@@ -23,8 +23,7 @@
         <ng-container matColumnDef="chart">
             <th mat-header-cell *matHeaderCellDef> chart </th>
             <td mat-cell *matCellDef="let element">
-                <a mat-button [routerLink]="['/historic', '']">Chart<mat-icon>show_chart</mat-icon></a
-                >
+                <a mat-button [routerLink]="['/historical', element.currency]">Chart<mat-icon>show_chart</mat-icon></a>
             </td>
         </ng-container>
     

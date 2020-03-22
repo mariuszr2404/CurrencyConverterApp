@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 const routes: Routes = [
   { path: 'lastest', component: LastRatesComponent },
   { path: 'historical', component: HistoricalComponent },
+  { path: 'historical/:secondary', component: HistoricalComponent},
   { path: 'comparison', component: TopDifferenceCurrencyComponent },
   { path: '',
     redirectTo: '/lastest',

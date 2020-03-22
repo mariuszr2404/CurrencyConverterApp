@@ -1,1 +1,19 @@
-<p>top-difference-currency works!</p>
+<section class="diff-overview">
+    <h1 class="mat-display-2">Top Diff Percentage bettwen Today and Yesterday</h1>
+    <div class="content mat-elevation-z4">
+      <mat-tab-group>
+        <mat-tab label="Increase">
+            <ng-template mat-tab-label>
+                Increase <mat-icon class="material-icons">trending_up</mat-icon>
+            </ng-template>
+            <app-top-difference-table [rates]="ratesData.increase"></app-top-difference-table>
+        </mat-tab>
+        <mat-tab label="Decrease">
+            <ng-template mat-tab-label>
+                Decrease <mat-icon class="material-icons">trending_down</mat-icon>
+            </ng-template>
+            <app-top-difference-table [rates]="ratesData.decrease"></app-top-difference-table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+</section>

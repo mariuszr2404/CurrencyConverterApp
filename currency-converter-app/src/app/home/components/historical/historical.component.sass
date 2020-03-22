@@ -1,0 +1,19 @@
+@import '../../../../assets/flex'
+:host
+    @include flexbox
+    @include justify-content(center)
+    .historical-rates
+        &__title
+            @include flexbox
+            @include justify-content(flex-start)
+            padding-bottom: 32px
+            font-size: 2rem
+            .material-icons
+                margin-right: 48px
+                position: relative
+                bottom: 8px
+                font-size: 3rem
+                cursor: pointer
+mat-spinner
+    position: absolute
+    top: 50%

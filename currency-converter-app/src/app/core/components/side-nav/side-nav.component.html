@@ -1,7 +1,7 @@
 <mat-sidenav-container class="currency-menu">
 	<mat-nav-list>
 		<a mat-list-item routerLink="/lastest" routerLinkActive="active">Last rates</a>
-		<a mat-list-item routerLink="/historical" routerLinkActive="active">Last 30 days</a>
+		<a matTooltipClass="tooltip-error" matTooltip="{{message}}" [matTooltipPosition]="'before'" mat-list-item routerLink="/historical" routerLinkActive="active">Last 30 days</a>
 		<a mat-list-item routerLink="/comparison" routerLinkActive="active">Top 5</a>
 	</mat-nav-list>
 </mat-sidenav-container>

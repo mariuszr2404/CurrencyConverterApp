@@ -8,6 +8,8 @@ import { LastRatesComponent } from './components/last-rates/last-rates.component
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TileCurencySelectComponent } from './components/tile-curency-select/tile-curency-select.component';
 import { MaterialDesignModule } from '../material-components/material-design.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { TopDifferenceTableComponent } from './components/top-difference-table/top-difference-table.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import { MaterialDesignModule } from '../material-components/material-design.mod
     TopDifferenceCurrencyComponent,
     LastRatesComponent,
     PageNotFoundComponent,
-    TileCurencySelectComponent
+    TileCurencySelectComponent,
+    TopDifferenceTableComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     HomeRoutingModule,
-    MaterialDesignModule
+    MaterialDesignModule,
+    NgxChartsModule
   ],
   exports: [
     TileCurencySelectComponent

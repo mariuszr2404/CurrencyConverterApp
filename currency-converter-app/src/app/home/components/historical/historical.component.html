@@ -1,1 +1,22 @@
-<div>aaa</div>
+<section class="historical-rates">
+    <div class="historical-rates__title">
+        <mat-icon [routerLink]="['/lastest']" class="material-icons">keyboard_backspace</mat-icon>
+        <h1>Compare {{this.baseCurrency}} vs {{this.secondaryCurrency}}</h1>
+    </div>
+    <ngx-charts-bar-vertical class="historical-rates__chart"
+    (window:resize)="onResize($event)"
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="chartData"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel">
+    </ngx-charts-bar-vertical>
+</section>
+<mat-spinner *ngIf="!isRequestLoadSucess"></mat-spinner>
+{{isRequestLoadSucess}}

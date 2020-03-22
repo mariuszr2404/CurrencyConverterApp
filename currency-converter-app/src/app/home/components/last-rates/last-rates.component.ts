@@ -5,11 +5,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { currentDate, prevDate } from '../../../core/services/dateHelper';
 import { YesterdayRate } from '../../../shared/models/yesterdayRates.interface';
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RateCompare } from 'src/app/shared/models/RateCompare.enum';
-import { LastRates } from '../../../shared/models/lastRates.interface';
-import { areAllEquivalent } from '@angular/compiler/src/output/output_ast';
+import { RateCompare } from 'src/app/shared/models/rate-compare.enum';
+import { LastRates } from '../../../shared/models/last-rates.interface';
+import { compareRates } from 'src/app/core/services/trend';
 
 @Component({
   selector: 'app-last-rates',
@@ -52,7 +52,7 @@ export class LastRatesComponent implements OnInit, OnDestroy {
           return Object.keys(rates.today).map(currency => ({
             currency,
             spot: rates.today[currency],
-            trend: this.compareRates(rates.today[currency], rates.yesterday[currency])
+            trend: compareRates(rates.today[currency], rates.yesterday[currency])
           }));
         })
       ).subscribe(this.updateState, this.handleError);
@@ -62,6 +62,7 @@ export class LastRatesComponent implements OnInit, OnDestroy {
     this.isLoadingRates = true;
     const availableCurrency = ['EUR'];
     rates.forEach((rate) => availableCurrency.push(rate.currency));
+    localStorage.setItem('currencies', JSON.stringify(availableCurrency));
     this.currencyService.availableCurrency.next(availableCurrency);
     this.dataSource = new MatTableDataSource(rates);
     this.dataSource.paginator = this.paginator;
@@ -69,15 +70,6 @@ export class LastRatesComponent implements OnInit, OnDestroy {
 
   private handleError = () => {
     this.errorMessage = 'Sorry could not load rates, please try again !!!';
-  }
-
-  private compareRates(today: number, yesterday: number) {
-    if (today > yesterday) {
-      return RateCompare.INCREASE;
-    } else if (today < yesterday) {
-      return RateCompare.DECREASE;
-    }
-    return RateCompare.EQUAL;
   }
 
   getIcon(trend: RateCompare) {

@@ -17,6 +17,9 @@ export class TileCurencySelectComponent implements OnInit, OnDestroy {
   constructor(private currencyService: CurrencyService) {
     this.currencyService.availableCurrency.subscribe(val => {
       this.currencyList = val;
+      if (this.currencyList.length === 0) {
+        this.currencyList = JSON.parse(localStorage.getItem('currencies'));
+      }
     });
   }
 
