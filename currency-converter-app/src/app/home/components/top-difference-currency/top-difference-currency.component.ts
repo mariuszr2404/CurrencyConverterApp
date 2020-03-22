@@ -66,7 +66,6 @@ export class TopDifferenceCurrencyComponent implements OnInit, OnDestroy {
             return { increase, decrease };
         })
       ).subscribe((res) => {
-        console.log(res);
         return this.ratesData = res;
       } );
   }
